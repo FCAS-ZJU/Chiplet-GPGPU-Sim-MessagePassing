@@ -1,0 +1,151 @@
+
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/local/cuda/open64/lib//be
+	// nvopencc 4.0 built on 2011-05-12
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00004a35_00000000-7_bfs.cpp3.i (/tmp/ccBI#.cl18Gs)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00004a35_00000000-6_bfs.cudafe2.gpu"
+	.file	3	"bfs.cu"
+	.file	4	"/usr/lib/gcc/x86_64-linux-gnu/4.4.7/include/stddef.h"
+	.file	5	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
+	.file	6	"/usr/local/cuda/bin/../include/host_defines.h"
+	.file	7	"/usr/local/cuda/bin/../include/builtin_types.h"
+	.file	8	"/usr/local/cuda/bin/../include/device_types.h"
+	.file	9	"/usr/local/cuda/bin/../include/driver_types.h"
+	.file	10	"/usr/local/cuda/bin/../include/surface_types.h"
+	.file	11	"/usr/local/cuda/bin/../include/texture_types.h"
+	.file	12	"/usr/local/cuda/bin/../include/vector_types.h"
+	.file	13	"/usr/local/cuda/bin/../include/device_launch_parameters.h"
+	.file	14	"/usr/local/cuda/bin/../include/crt/storage_class.h"
+	.file	15	"/usr/include/x86_64-linux-gnu/bits/types.h"
+	.file	16	"/usr/include/x86_64-linux-gnu/bits/types/clock_t.h"
+	.file	17	"kernel.cu"
+	.file	18	"/usr/local/cuda/bin/../include/common_functions.h"
+	.file	19	"/usr/local/cuda/bin/../include/math_functions.h"
+	.file	20	"/usr/local/cuda/bin/../include/math_constants.h"
+	.file	21	"/usr/local/cuda/bin/../include/device_functions.h"
+	.file	22	"/usr/local/cuda/bin/../include/sm_11_atomic_functions.h"
+	.file	23	"/usr/local/cuda/bin/../include/sm_12_atomic_functions.h"
+	.file	24	"/usr/local/cuda/bin/../include/sm_13_double_functions.h"
+	.file	25	"/usr/local/cuda/bin/../include/sm_20_atomic_functions.h"
+	.file	26	"/usr/local/cuda/bin/../include/sm_20_intrinsics.h"
+	.file	27	"/usr/local/cuda/bin/../include/surface_functions.h"
+	.file	28	"/usr/local/cuda/bin/../include/texture_fetch_functions.h"
+	.file	29	"/usr/local/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+	.entry _Z6KernelP4NodePiPbS2_S1_S2_i (
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_nodes,
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_edges,
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_mask,
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_visited,
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_cost,
+		.param .u64 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_over,
+		.param .s32 __cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_no_of_nodes)
+	{
+	.reg .u16 %rh<7>;
+	.reg .u32 %r<19>;
+	.reg .u64 %rd<23>;
+	.reg .pred %p<7>;
+	.loc	17	22	0
+$LDWbegin__Z6KernelP4NodePiPbS2_S1_S2_i:
+	mov.u16 	%rh1, %ctaid.x;
+	mul.wide.u16 	%r1, %rh1, 256;
+	cvt.u32.u16 	%r2, %tid.x;
+	add.u32 	%r3, %r2, %r1;
+	ld.param.s32 	%r4, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_no_of_nodes];
+	setp.le.s32 	%p1, %r4, %r3;
+	@%p1 bra 	$Lt_0_5122;
+	cvt.s64.s32 	%rd1, %r3;
+	ld.param.u64 	%rd2, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_mask];
+	add.u64 	%rd3, %rd1, %rd2;
+	ld.global.s8 	%r5, [%rd3+0];
+	mov.u32 	%r6, 0;
+	setp.eq.s32 	%p2, %r5, %r6;
+	@%p2 bra 	$Lt_0_5122;
+	.loc	17	34	0
+	mov.s16 	%rh2, 0;
+	st.global.s8 	[%rd3+0], %rh2;
+	.loc	17	35	0
+	ld.param.u64 	%rd4, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_visited];
+	mov.s16 	%rh3, 1;
+	add.u64 	%rd5, %rd1, %rd4;
+	st.global.s8 	[%rd5+0], %rh3;
+	.loc	17	36	0
+	ld.param.u64 	%rd6, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_nodes];
+	mul.lo.u64 	%rd7, %rd1, 8;
+	add.u64 	%rd8, %rd6, %rd7;
+	ld.global.s32 	%r7, [%rd8+0];
+	mov.s32 	%r8, %r7;
+	ld.global.s32 	%r9, [%rd8+4];
+	add.s32 	%r10, %r9, %r7;
+	setp.le.s32 	%p3, %r10, %r7;
+	@%p3 bra 	$Lt_0_5122;
+	ld.param.u64 	%rd9, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_edges];
+	cvt.s64.s32 	%rd10, %r7;
+	mul.wide.s32 	%rd11, %r7, 4;
+	add.u64 	%rd12, %rd9, %rd11;
+$Lt_0_4098:
+ //<loop> Loop body line 36, nesting depth: 1, estimated iterations: unknown
+	.loc	17	38	0
+	ld.global.s32 	%r11, [%rd12+0];
+	cvt.s64.s32 	%rd13, %r11;
+	.loc	17	35	0
+	ld.param.u64 	%rd4, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_visited];
+	.loc	17	38	0
+	add.u64 	%rd14, %rd13, %rd4;
+	ld.global.s8 	%r12, [%rd14+0];
+	mov.u32 	%r13, 0;
+	setp.ne.s32 	%p4, %r12, %r13;
+	@%p4 bra 	$Lt_0_4354;
+	.loc	17	41	0
+	ld.param.u64 	%rd15, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_cost];
+	mul.lo.u64 	%rd16, %rd1, 4;
+	add.u64 	%rd17, %rd15, %rd16;
+	ld.global.s32 	%r14, [%rd17+0];
+	add.s32 	%r15, %r14, 1;
+	mul.lo.u64 	%rd18, %rd13, 4;
+	add.u64 	%rd19, %rd15, %rd18;
+	st.global.s32 	[%rd19+0], %r15;
+	.loc	17	42	0
+	mov.s16 	%rh4, 1;
+	.loc	17	22	0
+	ld.param.u64 	%rd2, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_graph_mask];
+	.loc	17	42	0
+	add.u64 	%rd20, %rd13, %rd2;
+	st.global.s8 	[%rd20+0], %rh4;
+	.loc	17	44	0
+	mov.s16 	%rh5, 1;
+	ld.param.u64 	%rd21, [__cudaparm__Z6KernelP4NodePiPbS2_S1_S2_i_g_over];
+	st.global.s8 	[%rd21+0], %rh5;
+	ld.global.s32 	%r16, [%rd8+0];
+	ld.global.s32 	%r17, [%rd8+4];
+	add.s32 	%r10, %r16, %r17;
+$Lt_0_4354:
+	.loc	17	36	0
+	add.s32 	%r8, %r8, 1;
+	add.u64 	%rd12, %rd12, 4;
+	setp.gt.s32 	%p5, %r10, %r8;
+	@%p5 bra 	$Lt_0_4098;
+$Lt_0_5122:
+$L_0_3074:
+	.loc	17	48	0
+	exit;
+$LDWend__Z6KernelP4NodePiPbS2_S1_S2_i:
+	} // _Z6KernelP4NodePiPbS2_S1_S2_i
+
+

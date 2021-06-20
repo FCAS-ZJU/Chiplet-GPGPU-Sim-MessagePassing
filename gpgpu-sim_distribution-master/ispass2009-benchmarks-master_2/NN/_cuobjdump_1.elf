@@ -1,0 +1,365 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             448        3        0     16     .text._Z18executeFourthLayerPfS_S_
+   7               0               0        3        0     18     .nv.info._Z18executeFourthLayerPfS_S_
+   8               0             480        3        0     12     .text._Z17executeThirdLayerPfS_S_
+   9               0               0        3        0     14     .nv.info._Z17executeThirdLayerPfS_S_
+  10               0             736        3        0      8     .text._Z18executeSecondLayerPfS_S_
+  11               0               0        3        0     10     .nv.info._Z18executeSecondLayerPfS_S_
+  12               0             528        3        0      4     .text._Z17executeFirstLayerPfS_S_
+  13               0               0        3        0      6     .nv.info._Z17executeFirstLayerPfS_S_
+  14               0               0        3        0     15     .nv.shared._Z17executeThirdLayerPfS_S_
+  15               0               0        3        0     13     .nv.constant1._Z17executeThirdLayerPfS_S_
+  16               0               0        3        0     11     .nv.shared._Z18executeSecondLayerPfS_S_
+  17               0               0        3        0      9     .nv.constant1._Z18executeSecondLayerPfS_S_
+  18               0               0        3        0      7     .nv.shared._Z17executeFirstLayerPfS_S_
+  19               0               0        3        0      5     .nv.constant1._Z17executeFirstLayerPfS_S_
+  20               0               0        3        0     19     .nv.shared._Z18executeFourthLayerPfS_S_
+  21               0               0        3        0     17     .nv.constant1._Z18executeFourthLayerPfS_S_
+  22               0               0        3        0     20     .nv.constant0
+  23               0               0       12       10     16     _Z18executeFourthLayerPfS_S_
+  24               0               0       12       10     12     _Z17executeThirdLayerPfS_S_
+  25               0               0       12       10      8     _Z18executeSecondLayerPfS_S_
+  26               0               0       12       10      4     _Z17executeFirstLayerPfS_S_
+  27             100             100       11        0     20     kernelTemplate2
+  28               0             100       11        0     20     kernelTemplate
+
+
+.nv.constant1._Z17executeFirstLayerPfS_S_	PROGBITS
+0x000003ff  0x3f0ccccd  0xbf317200  0xb5bfbe8e  0x3f800000  
+0x42b00000  0x40000000  0x80000000  0x3c86a81b  
+0x3e08677b  0xbeaaaa29  0x0000000d  0x000003f6  
+
+
+
+.nv.shared._Z17executeFirstLayerPfS_S_	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant1._Z18executeSecondLayerPfS_S_	PROGBITS
+0x000003ff  0x3f0ccccd  0xbf317200  0xb5bfbe8e  0x3f800000  
+0x42b00000  0x40000000  0x80000000  0x3c86a81b  
+0x3e08677b  0xbeaaaa29  0x00000005  0x000004e2  
+
+
+
+.nv.shared._Z18executeSecondLayerPfS_S_	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant1._Z17executeThirdLayerPfS_S_	PROGBITS
+0x3f0ccccd  0xbf317200  0xb5bfbe8e  0x3f800000  0x42b00000  
+0x40000000  0x80000000  0x3c86a81b  0x3e08677b  
+0xbeaaaa29  0x00000064  
+
+
+.nv.shared._Z17executeThirdLayerPfS_S_	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant1._Z18executeFourthLayerPfS_S_	PROGBITS
+0x3f0ccccd  0xbf317200  0xb5bfbe8e  0x3f800000  0x42b00000  
+0x40000000  0x80000000  0x3c86a81b  0x3e08677b  
+0xbeaaaa29  0x0000000a  
+
+
+.nv.shared._Z18executeFourthLayerPfS_S_	NOBITS
+   No data to be dumped. 
+
+
+.nv.constant0	PROGBITS
+0x00000000  0x00000001  0x00000002  0x00000003  0x00000004  
+0x0000001d  0x0000001e  0x0000001f  0x00000020  
+0x00000021  0x0000003a  0x0000003b  0x0000003c  
+0x0000003d  0x0000003e  0x00000057  0x00000058  
+0x00000059  0x0000005a  0x0000005b  0x00000074  
+0x00000075  0x00000076  0x00000077  0x00000078  
+0x00000000  0x00000001  0x00000002  0x00000003  
+0x00000004  0x0000000d  0x0000000e  0x0000000f  
+0x00000010  0x00000011  0x0000001a  0x0000001b  
+0x0000001c  0x0000001d  0x0000001e  0x00000027  
+0x00000028  0x00000029  0x0000002a  0x0000002b  
+0x00000034  0x00000035  0x00000036  0x00000037  
+0x00000038  
+
+
+.text._Z17executeFirstLayerPfS_S_	PROGBITS
+bar = 0	reg = 10	lmem=0	smem=40
+0xd0800209  0x00400780  0xa0000009  0x04000780  
+0x411a2c01  0x00000003  0x403a040d  0x00000003  
+0x30010415  0xc4100780  0x30020011  0xc4100780  
+0x20038a0c  0x2104ec10  0x0000f805  0xc0000780  
+0x41092e19  0x00000037  0x2019801d  0x00000003  
+0xd00e0815  0x80c00780  0x24808620  0x20088c20  
+0x30021021  0xc4100780  0x20048811  0x00000003  
+0x2000c825  0x04220780  0xd00e0821  0x80c00780  
+0xd00e1225  0x80c00780  0x20018001  0x00000003  
+0x300701fd  0x6c0147c8  0xe0081215  0x00014780  
+0xd4000805  0x20000780  0x1000b003  0x00000280  
+0xa0000a01  0xc4004780  0xc02b000d  0x03f2aaab  
+0xb08107fd  0x605187c8  0xa0038003  0x00000000  
+0xa0000611  0xc4104780  0x1002f003  0x00000100  
+0xb0000801  0x00010780  0xc03b0015  0x03fb8aa3  
+0xa0000a15  0xcc064780  0xe0000a01  0x0bf31723  
+0xe00e0a01  0x0b5bfbeb  0xc03b0019  0x03fb8aa3  
+0xb0000a01  0xc0004780  0xb0000c15  0xc0004780  
+0x90000001  0xc0000780  0x90000a15  0xc0000780  
+0xe1050015  0x00410780  0x10008001  0x03f80003  
+0x90000a15  0x00000780  0xb08509fd  0x604187c8  
+0xe0008a01  0x04000003  0xd087060d  0x04400780  
+0x10000801  0x2440c280  0xd0030011  0x04004780  
+0x10038003  0x00000780  0xc0030611  0x00000780  
+0x10268001  0x0bd57be7  0xe01b0801  0x03c86a83  
+0xe1000801  0x00424780  0xe1000801  0x00428780  
+0xc0000801  0x00000780  0xb07c07fd  0x600087c8  
+0xe0000611  0x0000c780  0xb0000611  0x0000c280  
+0x10004c01  0x0023c782  0x40298101  0x0000000b  
+0x600d0501  0x00000003  0x20000401  0x04000780  
+0x61362e01  0x0000003f  0xa0000805  0xc4004780  
+0x30020001  0xc4100780  0xc01c0205  0x03fdba2b  
+0x2000d001  0x04200780  0xd00e0005  0xa0c00781  
+
+
+
+.nv.info._Z17executeFirstLayerPfS_S_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 
+	<0x2>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x18
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x20010 0x1 
+
+
+.text._Z18executeSecondLayerPfS_S_	PROGBITS
+bar = 0	reg = 13	lmem=0	smem=40
+0xd0800211  0x00400780  0xa0000005  0x04000780  
+0x411c2c0d  0x0000000b  0x401a0801  0x00000003  
+0x30010219  0xc4100780  0x30020611  0xc4100780  
+0x10248015  0x00000007  0x20008c00  0x2104ec10  
+0xd00e0821  0x80c00780  0x00000a05  0xc0000780  
+0x41362e15  0x0000003f  0x20168619  0x0000000b  
+0x2480801c  0x20058e1c  0x30020e1d  0xc4100780  
+0x2000c81d  0x0421c780  0x20048825  0x00000003  
+0xd00e122d  0x80c00780  0xd00e0e31  0x80c00780  
+0x20088825  0x00000003  0xd00e1229  0x80c00780  
+0x20248e25  0x0000002b  0xd00e1225  0x80c00780  
+0xe00b1821  0x00020780  0xe0091421  0x00020780  
+0x200c8825  0x00000003  0xd00e1229  0x80c00780  
+0x2010882d  0x00000003  0x20088e25  0x00000057  
+0xd00e1231  0x80c00780  0xd00e1625  0x80c00780  
+0x202c8e2d  0x0000007f  0xd00e162d  0x80c00780  
+0xe00c1429  0x00020780  0x20148821  0x00000003  
+0xd00e1021  0x80c00780  0xe00b122d  0x00028780  
+0x20188811  0x00000003  0x20108e25  0x000000ab  
+0xd00e1229  0x80c00780  0xd00e0825  0x80c00780  
+0x20348e1d  0x000000d3  0xd00e0e1d  0x80c00780  
+0x2006860d  0x00000003  0xe00a1021  0x0002c780  
+0x300607fd  0x6c0147c8  0xe0071221  0x00020780  
+0xd4000805  0x20000780  0x1000c003  0x00000280  
+0xa0001001  0xc4004780  0xc02b000d  0x03f2aaab  
+0xb08107fd  0x605187c8  0xa0052003  0x00000000  
+0xa0000611  0xc4104780  0x10049003  0x00000100  
+0xb0000801  0x00010780  0xc03b0015  0x03fb8aa3  
+0xa0000a15  0xcc064780  0xe0000a01  0x0bf31723  
+0xe00e0a01  0x0b5bfbeb  0xc03b0019  0x03fb8aa3  
+0xb0000a01  0xc0004780  0xb0000c15  0xc0004780  
+0x90000001  0xc0000780  0x90000a15  0xc0000780  
+0xe1050015  0x00410780  0x10008001  0x03f80003  
+0x90000a15  0x00000780  0xb08509fd  0x604187c8  
+0xe0008a01  0x04000003  0xd087060d  0x04400780  
+0x10000801  0x2440c280  0xd0030011  0x04004780  
+0x10052003  0x00000780  0xc0030611  0x00000780  
+0x10268001  0x0bd57be7  0xe01b0801  0x03c86a83  
+0xe1000801  0x00424780  0xe1000801  0x00428780  
+0xc0000801  0x00000780  0xb07c07fd  0x600087c8  
+0xe0000611  0x0000c780  0xb0000611  0x0000c280  
+0x10004c01  0x0023c782  0x40198101  0x00000003  
+0x60050901  0x00000003  0x20000201  0x04000780  
+0x61222e01  0x0000004f  0xa0000805  0xc4004780  
+0x30020001  0xc4100780  0xc01c0205  0x03fdba2b  
+0x2000d001  0x04200780  0xd00e0005  0xa0c00781  
+
+
+
+.nv.info._Z18executeSecondLayerPfS_S_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 
+	<0x2>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x18
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x20010 0x1 
+
+
+.text._Z17executeThirdLayerPfS_S_	PROGBITS
+bar = 0	reg = 8	lmem=0	smem=40
+0xa0004c01  0x04200780  0x10238005  0x0000004f  
+0x40030009  0x00000780  0x60020209  0x00008780  
+0x30100409  0xc4100780  0x60020005  0x00008780  
+0x30020209  0xc4100780  0x2000cc09  0x04208780  
+0x41222e15  0x0000004f  0x20228211  0x0000004f  
+0xd00e040d  0x80c00780  0x30020a19  0xc4100780  
+0x20048409  0x00000003  0x2000c81d  0x04218780  
+0xd00e0419  0x80c00780  0xd00e0e1d  0x80c00780  
+0x20018205  0x00000003  0x300403fd  0x6c0147c8  
+0xe0060e0d  0x0000c780  0x20018a15  0x00000003  
+0x1000b003  0x00000280  0xa0000605  0xc4004780  
+0xc02b0209  0x03f2aaab  0xb08005fd  0x605187c8  
+0xa000040d  0xc4104780  0x1002d003  0x00000100  
+0xb0000605  0x0000c780  0xc03b0211  0x03fb8aa3  
+0xa0000811  0xcc064780  0xe0000805  0x0bf31723  
+0xe00e0805  0x0b5bfbeb  0xc03b0215  0x03fb8aa3  
+0xb0000805  0xc0004780  0xb0000a11  0xc0004780  
+0x90000205  0xc0000780  0x90000811  0xc0000780  
+0xe1040211  0x0040c780  0x10008005  0x03f80003  
+0x90000811  0x00000780  0xb08407fd  0x604187c8  
+0xe0008805  0x04000003  0xd0860409  0x04400780  
+0x10000605  0x2440c280  0xd0020205  0x04004780  
+0x10036003  0x00000780  0xc002040d  0x00000780  
+0x10268005  0x0bd57be7  0xe01b0605  0x03c86a83  
+0xe1010605  0x00420780  0xe1010605  0x00424780  
+0xc0010605  0x00000780  0xb07c05fd  0x600087c8  
+0xe0010405  0x00008780  0xb0000405  0x00008280  
+0x61242e01  0x00000007  0xa0000205  0xc4004780  
+0x30020001  0xc4100780  0xc01c0205  0x03fdba2b  
+0x2000d001  0x04200780  0xd00e0005  0xa0c00781  
+
+
+
+.nv.info._Z17executeThirdLayerPfS_S_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 
+	<0x2>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x18
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+
+
+.text._Z18executeFourthLayerPfS_S_	PROGBITS
+bar = 0	reg = 8	lmem=0	smem=40
+0xa0004c01  0x04200780  0x40658005  0x00000007  
+0x30020209  0xc4100780  0x2000cc09  0x04208780  
+0x41242e15  0x00000007  0x20248211  0x00000007  
+0xd00e040d  0x80c00780  0x30020a19  0xc4100780  
+0x20048409  0x00000003  0x2000c81d  0x04218780  
+0xd00e0419  0x80c00780  0xd00e0e1d  0x80c00780  
+0x20018205  0x00000003  0x300403fd  0x6c0147c8  
+0xe0060e0d  0x0000c780  0x20018a15  0x00000003  
+0x10007003  0x00000280  0xa0000605  0xc4004780  
+0xc02b0209  0x03f2aaab  0xb08005fd  0x605187c8  
+0xa000040d  0xc4104780  0x10029003  0x00000100  
+0xb0000605  0x0000c780  0xc03b0211  0x03fb8aa3  
+0xa0000811  0xcc064780  0xe0000805  0x0bf31723  
+0xe00e0805  0x0b5bfbeb  0xc03b0215  0x03fb8aa3  
+0xb0000805  0xc0004780  0xb0000a11  0xc0004780  
+0x90000205  0xc0000780  0x90000811  0xc0000780  
+0xe1040211  0x0040c780  0x10008005  0x03f80003  
+0x90000811  0x00000780  0xb08407fd  0x604187c8  
+0xe0008805  0x04000003  0xd0860409  0x04400780  
+0x10000605  0x2440c280  0xd0020205  0x04004780  
+0x10032003  0x00000780  0xc002040d  0x00000780  
+0x10268005  0x0bd57be7  0xe01b0605  0x03c86a83  
+0xe1010605  0x00420780  0xe1010605  0x00424780  
+0xc0010605  0x00000780  0xb07c05fd  0x600087c8  
+0xe0010405  0x00008780  0xb0000405  0x00008280  
+0x610a2e01  0x00000003  0xa0000205  0xc4004780  
+0x30020001  0xc4100780  0xc01c0205  0x03fdba2b  
+0x2000d001  0x04200780  0xd00e0005  0xa0c00781  
+
+
+
+.nv.info._Z18executeFourthLayerPfS_S_	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 
+	<0x2>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x18
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+

@@ -1,0 +1,124 @@
+
+	.version 2.3
+	.target sm_20
+	.address_size 64
+	// compiled with /usr/local/cuda/open64/lib//be
+	// nvopencc 4.0 built on 2011-05-12
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00002d79_00000000-13_mm.compute_20.cpp3.i (/tmp/ccBI#.d0hGGx)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_20, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00002d79_00000000-12_mm.compute_20.cudafe2.gpu"
+	.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.4.7/include/stddef.h"
+	.file	4	"/usr/local/cuda/include/crt/device_runtime.h"
+	.file	5	"/usr/local/cuda/include/host_defines.h"
+	.file	6	"/usr/local/cuda/include/builtin_types.h"
+	.file	7	"/usr/local/cuda/include/device_types.h"
+	.file	8	"/usr/local/cuda/include/driver_types.h"
+	.file	9	"/usr/local/cuda/include/surface_types.h"
+	.file	10	"/usr/local/cuda/include/texture_types.h"
+	.file	11	"/usr/local/cuda/include/vector_types.h"
+	.file	12	"/usr/local/cuda/include/device_launch_parameters.h"
+	.file	13	"/usr/local/cuda/include/crt/storage_class.h"
+	.file	14	"/usr/include/x86_64-linux-gnu/bits/types.h"
+	.file	15	"/usr/include/x86_64-linux-gnu/bits/types/clock_t.h"
+	.file	16	"mm.cu"
+	.file	17	"/usr/local/cuda/include/common_functions.h"
+	.file	18	"/usr/local/cuda/include/math_functions.h"
+	.file	19	"/usr/local/cuda/include/math_constants.h"
+	.file	20	"/usr/local/cuda/include/device_functions.h"
+	.file	21	"/usr/local/cuda/include/sm_11_atomic_functions.h"
+	.file	22	"/usr/local/cuda/include/sm_12_atomic_functions.h"
+	.file	23	"/usr/local/cuda/include/sm_13_double_functions.h"
+	.file	24	"/usr/local/cuda/include/sm_20_atomic_functions.h"
+	.file	25	"/usr/local/cuda/include/sm_20_intrinsics.h"
+	.file	26	"/usr/local/cuda/include/surface_functions.h"
+	.file	27	"/usr/local/cuda/include/texture_fetch_functions.h"
+	.file	28	"/usr/local/cuda/include/math_functions_dbl_ptx3.h"
+
+
+	.entry _Z14matrix_mul_gpuPiS_S_i (
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_M,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_N,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_P,
+		.param .s32 __cudaparm__Z14matrix_mul_gpuPiS_S_i_width)
+	{
+	.reg .u32 %r<27>;
+	.reg .u64 %rd<16>;
+	.reg .pred %p<4>;
+	.loc	16	13	0
+$LDWbegin__Z14matrix_mul_gpuPiS_S_i:
+	mov.u32 	%r1, %tid.x;
+	mov.u32 	%r2, %tid.y;
+	mov.u32 	%r3, %ntid.x;
+	mov.u32 	%r4, %ctaid.x;
+	mov.u32 	%r5, %ntid.y;
+	mov.u32 	%r6, %ctaid.y;
+	ld.param.s32 	%r7, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_width];
+	mov.u32 	%r8, 0;
+	setp.le.s32 	%p1, %r7, %r8;
+	@%p1 bra 	$Lt_0_2306;
+	mov.s32 	%r9, %r7;
+	mul.lo.u32 	%r10, %r5, %r6;
+	mul.lo.u32 	%r11, %r3, %r4;
+	add.u32 	%r12, %r10, %r2;
+	add.u32 	%r13, %r11, %r1;
+	mul.lo.s32 	%r14, %r7, %r12;
+	mov.s32 	%r15, %r14;
+	add.s32 	%r16, %r14, %r7;
+	cvt.s64.s32 	%rd1, %r7;
+	mul.wide.s32 	%rd2, %r7, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_N];
+	cvt.s64.s32 	%rd4, %r13;
+	mul.wide.s32 	%rd5, %r13, 4;
+	add.u64 	%rd6, %rd3, %rd5;
+	ld.param.u64 	%rd7, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_M];
+	cvt.s64.s32 	%rd8, %r14;
+	mul.wide.s32 	%rd9, %r14, 4;
+	add.u64 	%rd10, %rd7, %rd9;
+	mov.s32 	%r17, 0;
+	mov.s32 	%r18, %r9;
+$Lt_0_1794:
+ //<loop> Loop body line 13, nesting depth: 1, estimated iterations: unknown
+	.loc	16	23	0
+	ld.global.s32 	%r19, [%rd6+0];
+	ld.global.s32 	%r20, [%rd10+0];
+	mul.lo.s32 	%r21, %r19, %r20;
+	add.s32 	%r17, %r17, %r21;
+	add.s32 	%r15, %r15, 1;
+	add.u64 	%rd10, %rd10, 4;
+	add.u64 	%rd6, %rd2, %rd6;
+	setp.ne.s32 	%p2, %r15, %r16;
+	@%p2 bra 	$Lt_0_1794;
+	bra.uni 	$Lt_0_1282;
+$Lt_0_2306:
+	mul.lo.u32 	%r22, %r5, %r6;
+	mul.lo.u32 	%r23, %r3, %r4;
+	add.u32 	%r24, %r22, %r2;
+	add.u32 	%r13, %r23, %r1;
+	mul.lo.s32 	%r14, %r7, %r24;
+	mov.s32 	%r17, 0;
+$Lt_0_1282:
+	.loc	16	25	0
+	ld.param.u64 	%rd11, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_P];
+	add.s32 	%r25, %r14, %r13;
+	cvt.s64.s32 	%rd12, %r25;
+	mul.wide.s32 	%rd13, %r25, 4;
+	add.u64 	%rd14, %rd11, %rd13;
+	st.global.s32 	[%rd14+0], %r17;
+	.loc	16	26	0
+	exit;
+$LDWend__Z14matrix_mul_gpuPiS_S_i:
+	} // _Z14matrix_mul_gpuPiS_S_i
+

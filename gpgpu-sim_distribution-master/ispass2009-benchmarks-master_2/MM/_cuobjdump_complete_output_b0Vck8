@@ -1,0 +1,589 @@
+
+Fatbin elf code:
+================
+arch = sm_10
+code version = [1,2]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = mm.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             392        3        0      4     .text._Z14matrix_mul_gpuPiS_S_i
+   7               0               0        3        0      6     .nv.info._Z14matrix_mul_gpuPiS_S_i
+   8               0               0        3        0      7     .nv.shared._Z14matrix_mul_gpuPiS_S_i
+   9               0               0        3        0      5     .nv.constant1._Z14matrix_mul_gpuPiS_S_i
+  10               0               0       12       10      4     _Z14matrix_mul_gpuPiS_S_i
+
+
+.nv.constant1._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+0x000003ff  
+
+
+.nv.shared._Z14matrix_mul_gpuPiS_S_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+bar = 0	reg = 11	lmem=0	smem=44
+0xd0800205  0x00400780  0x307cd5fd  0x6c20c7c8  
+0xa0000009  0x04000780  0xa0000205  0x04000780  
+0x10023003  0x00000280  0x10004e01  0x0023c780  
+0x6000440d  0x00204780  0x1000d405  0x0423c780  
+0x40070401  0x00000780  0x60060611  0x00000780  
+0x10004c01  0x0023c780  0x30100815  0xc4100780  
+0x60004211  0x00208780  0x60060405  0x00014780  
+0xa0021003  0x00000000  0x30020801  0xc4100780  
+0x3002d419  0xc4300780  0x1000f815  0x0403c780  
+0x30020209  0xc4100780  0x2100ec1c  0x10008200  
+0x2101f420  0x2102e824  0xd00e0e09  0x80c00780  
+0xd00e120d  0x80c00780  0x40070829  0x00000780  
+0x60060a29  0x00028780  0x30101429  0xc4100780  
+0x20018205  0x00000003  0x60060809  0x00028780  
+0x300803fd  0x6c0147c8  0x20000415  0x04014780  
+0x20049225  0x00000003  0x20000c1d  0x0401c780  
+0x10015003  0x00000280  0xf0000001  0xe0000002  
+0x1002d003  0x00000780  0x10004e01  0x0023c780  
+0x6000440d  0x00204780  0x1000d401  0x0423c780  
+0x40070005  0x00000780  0x60060205  0x00004780  
+0x30100211  0xc4100780  0x10004c09  0x0023c780  
+0x60060001  0x00010780  0x60024211  0x00208780  
+0x1000f815  0x0403c780  0x20000001  0x04010780  
+0x30020001  0xc4100780  0x2000d001  0x04200780  
+0xd00e0015  0xa0c00781  
+
+
+.nv.info._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 0x18 
+	<0x2>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x1c
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x3	Offset  : 0x18	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x210108 0x20 
+
+	code for sm_10
+		Function : _Z14matrix_mul_gpuPiS_S_i
+	/*0000*/     /*0xd080020500400780*/ 	LOP.AND.U16 R0H, R0H, c [0x1] [0x0];
+	/*0008*/     /*0x307cd5fd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xa], R124, LE;
+	/*0010*/     /*0xa000000904000780*/ 	I2I.U32.U16 R2, R0L;
+	/*0018*/     /*0xa000020504000780*/ 	I2I.U32.U16 R1, R0H;
+	/*0020*/     /*0x1002300300000280*/ 	BRA C0.NE, 0x118;
+	/*0028*/     /*0x10004e010023c780*/ 	MOV.U16 R0L, g [0x7].U16;
+	/*0030*/     /*0x6000440d00204780*/ 	IMAD.U16 R3, g [0x2].U16, R0L, R1;
+	/*0038*/     /*0x1000d4050423c780*/ 	MOV R1, g [0xa];
+	/*0040*/     /*0x4007040100000780*/ 	IMUL.U16.U16 R0, R1L, R3H;
+	/*0048*/     /*0x6006061100000780*/ 	IMAD.U16 R4, R1H, R3L, R0;
+	/*0050*/     /*0x10004c010023c780*/ 	MOV.U16 R0L, g [0x6].U16;
+	/*0058*/     /*0x30100815c4100780*/ 	SHL R5, R4, 0x10;
+	/*0060*/     /*0x6000421100208780*/ 	IMAD.U16 R4, g [0x1].U16, R0L, R2;
+	/*0068*/     /*0x6006040500014780*/ 	IMAD.U16 R1, R1L, R3L, R5;
+	/*0070*/     /*0xa002100300000000*/ 	SSY 0x108;
+	/*0078*/     /*0x30020801c4100780*/ 	SHL R0, R4, 0x2;
+	/*0080*/     /*0x3002d419c4300780*/ 	SHL R6, g [0xa], 0x2;
+	/*0088*/     /*0x1000f8150403c780*/ 	MOV R5, R124;
+	/*0090*/     /*0x30020209c4100780*/ 	SHL R2, R1, 0x2;
+	/*0098*/     /*0x2100ec1c        */ 	IADD32 R7, g [0x6], R0;
+	/*009c*/     /*0x10008200        */ 	MOV32 R0, R1;
+	/*00a0*/     /*0x2101f420        */ 	IADD32 R8, g [0xa], R1;
+	/*00a4*/     /*0x2102e824        */ 	IADD32 R9, g [0x4], R2;
+	/*00a8*/     /*0xd00e0e0980c00780*/ 	GLD.U32 R2, global14 [R7];
+	/*00b0*/     /*0xd00e120d80c00780*/ 	GLD.U32 R3, global14 [R9];
+	/*00b8*/     /*0x4007082900000780*/ 	IMUL.U16.U16 R10, R2L, R3H;
+	/*00c0*/     /*0x60060a2900028780*/ 	IMAD.U16 R10, R2H, R3L, R10;
+	/*00c8*/     /*0x30101429c4100780*/ 	SHL R10, R10, 0x10;
+	/*00d0*/     /*0x2001820500000003*/ 	IADD32I R1, R1, 0x1;
+	/*00d8*/     /*0x6006080900028780*/ 	IMAD.U16 R2, R2L, R3L, R10;
+	/*00e0*/     /*0x300803fd6c0147c8*/ 	ISET.S32.C0 o [0x7f], R1, R8, NE;
+	/*00e8*/     /*0x2000041504014780*/ 	IADD R5, R2, R5;
+	/*00f0*/     /*0x2004922500000003*/ 	IADD32I R9, R9, 0x4;
+	/*00f8*/     /*0x20000c1d0401c780*/ 	IADD R7, R6, R7;
+	/*0100*/     /*0x1001500300000280*/ 	BRA C0.NE, 0xa8;
+	/*0108*/     /*0xf0000001e0000002*/ 	NOP.S;
+	/*0110*/     /*0x1002d00300000780*/ 	BRA 0x168;
+	/*0118*/     /*0x10004e010023c780*/ 	MOV.U16 R0L, g [0x7].U16;
+	/*0120*/     /*0x6000440d00204780*/ 	IMAD.U16 R3, g [0x2].U16, R0L, R1;
+	/*0128*/     /*0x1000d4010423c780*/ 	MOV R0, g [0xa];
+	/*0130*/     /*0x4007000500000780*/ 	IMUL.U16.U16 R1, R0L, R3H;
+	/*0138*/     /*0x6006020500004780*/ 	IMAD.U16 R1, R0H, R3L, R1;
+	/*0140*/     /*0x30100211c4100780*/ 	SHL R4, R1, 0x10;
+	/*0148*/     /*0x10004c090023c780*/ 	MOV.U16 R1L, g [0x6].U16;
+	/*0150*/     /*0x6006000100010780*/ 	IMAD.U16 R0, R0L, R3L, R4;
+	/*0158*/     /*0x6002421100208780*/ 	IMAD.U16 R4, g [0x1].U16, R1L, R2;
+	/*0160*/     /*0x1000f8150403c780*/ 	MOV R5, R124;
+	/*0168*/     /*0x2000000104010780*/ 	IADD R0, R0, R4;
+	/*0170*/     /*0x30020001c4100780*/ 	SHL R0, R0, 0x2;
+	/*0178*/     /*0x2000d00104200780*/ 	IADD R0, g [0x8], R0;
+	/*0180*/     /*0xd00e0015a0c00781*/ 	GST.U32 global14 [R0], R5;
+		..........................................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_10
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = mm.cu
+	.version 1.4
+	.target sm_10, map_f64_to_f32
+	// compiled with /usr/local/cuda/open64/lib//be
+	// nvopencc 4.0 built on 2011-05-12
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00001e7c_00000000-9_mm.compute_10.cpp3.i (/tmp/ccBI#.f41Hkg)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_10, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00001e7c_00000000-8_mm.compute_10.cudafe2.gpu"
+	.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.4.7/include/stddef.h"
+	.file	4	"/usr/local/cuda/include/crt/device_runtime.h"
+	.file	5	"/usr/local/cuda/include/host_defines.h"
+	.file	6	"/usr/local/cuda/include/builtin_types.h"
+	.file	7	"/usr/local/cuda/include/device_types.h"
+	.file	8	"/usr/local/cuda/include/driver_types.h"
+	.file	9	"/usr/local/cuda/include/surface_types.h"
+	.file	10	"/usr/local/cuda/include/texture_types.h"
+	.file	11	"/usr/local/cuda/include/vector_types.h"
+	.file	12	"/usr/local/cuda/include/device_launch_parameters.h"
+	.file	13	"/usr/local/cuda/include/crt/storage_class.h"
+	.file	14	"/usr/include/x86_64-linux-gnu/bits/types.h"
+	.file	15	"/usr/include/x86_64-linux-gnu/bits/types/clock_t.h"
+	.file	16	"mm.cu"
+	.file	17	"/usr/local/cuda/include/common_functions.h"
+	.file	18	"/usr/local/cuda/include/math_functions.h"
+	.file	19	"/usr/local/cuda/include/math_constants.h"
+	.file	20	"/usr/local/cuda/include/device_functions.h"
+	.file	21	"/usr/local/cuda/include/sm_11_atomic_functions.h"
+	.file	22	"/usr/local/cuda/include/sm_12_atomic_functions.h"
+	.file	23	"/usr/local/cuda/include/sm_13_double_functions.h"
+	.file	24	"/usr/local/cuda/include/sm_20_atomic_functions.h"
+	.file	25	"/usr/local/cuda/include/sm_20_intrinsics.h"
+	.file	26	"/usr/local/cuda/include/surface_functions.h"
+	.file	27	"/usr/local/cuda/include/texture_fetch_functions.h"
+	.file	28	"/usr/local/cuda/include/math_functions_dbl_ptx1.h"
+
+
+	.entry _Z14matrix_mul_gpuPiS_S_i (
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_M,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_N,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_P,
+		.param .s32 __cudaparm__Z14matrix_mul_gpuPiS_S_i_width)
+	{
+	.reg .u16 %rh<6>;
+	.reg .u32 %r<23>;
+	.reg .u64 %rd<16>;
+	.reg .pred %p<4>;
+	.loc	16	13	0
+$LDWbegin__Z14matrix_mul_gpuPiS_S_i:
+	cvt.u32.u16 	%r1, %tid.x;
+	cvt.u32.u16 	%r2, %tid.y;
+	mov.u16 	%rh1, %ntid.x;
+	mov.u16 	%rh2, %ctaid.x;
+	mov.u16 	%rh3, %ntid.y;
+	mov.u16 	%rh4, %ctaid.y;
+	ld.param.s32 	%r3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_width];
+	mov.u32 	%r4, 0;
+	setp.le.s32 	%p1, %r3, %r4;
+	@%p1 bra 	$Lt_0_2306;
+	ld.param.s32 	%r3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_width];
+	mov.s32 	%r5, %r3;
+	mul.wide.u16 	%r6, %rh3, %rh4;
+	mul.wide.u16 	%r7, %rh1, %rh2;
+	add.u32 	%r8, %r6, %r2;
+	add.u32 	%r9, %r7, %r1;
+	mul.lo.s32 	%r10, %r3, %r8;
+	mov.s32 	%r11, %r10;
+	add.s32 	%r12, %r10, %r3;
+	cvt.s64.s32 	%rd1, %r3;
+	mul.wide.s32 	%rd2, %r3, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_N];
+	cvt.s64.s32 	%rd4, %r9;
+	mul.wide.s32 	%rd5, %r9, 4;
+	add.u64 	%rd6, %rd3, %rd5;
+	ld.param.u64 	%rd7, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_M];
+	cvt.s64.s32 	%rd8, %r10;
+	mul.wide.s32 	%rd9, %r10, 4;
+	add.u64 	%rd10, %rd7, %rd9;
+	mov.s32 	%r13, 0;
+	mov.s32 	%r14, %r5;
+$Lt_0_1794:
+ //<loop> Loop body line 13, nesting depth: 1, estimated iterations: unknown
+	.loc	16	23	0
+	ld.global.s32 	%r15, [%rd6+0];
+	ld.global.s32 	%r16, [%rd10+0];
+	mul.lo.s32 	%r17, %r15, %r16;
+	add.s32 	%r13, %r13, %r17;
+	add.s32 	%r11, %r11, 1;
+	add.u64 	%rd10, %rd10, 4;
+	add.u64 	%rd6, %rd2, %rd6;
+	setp.ne.s32 	%p2, %r11, %r12;
+	@%p2 bra 	$Lt_0_1794;
+	bra.uni 	$Lt_0_1282;
+$Lt_0_2306:
+	mul.wide.u16 	%r18, %rh3, %rh4;
+	mul.wide.u16 	%r19, %rh1, %rh2;
+	add.u32 	%r20, %r18, %r2;
+	add.u32 	%r9, %r19, %r1;
+	.loc	16	13	0
+	ld.param.s32 	%r3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_width];
+	.loc	16	23	0
+	mul.lo.s32 	%r10, %r3, %r20;
+	mov.s32 	%r13, 0;
+$Lt_0_1282:
+	.loc	16	25	0
+	ld.param.u64 	%rd11, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_P];
+	add.s32 	%r21, %r10, %r9;
+	cvt.s64.s32 	%rd12, %r21;
+	mul.wide.s32 	%rd13, %r21, 4;
+	add.u64 	%rd14, %rd11, %rd13;
+	st.global.s32 	[%rd14+0], %r13;
+	.loc	16	26	0
+	exit;
+$LDWend__Z14matrix_mul_gpuPiS_S_i:
+	} // _Z14matrix_mul_gpuPiS_S_i
+
+
+Fatbin elf code:
+================
+arch = sm_20
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = mm.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             376        3        0      4     .text._Z14matrix_mul_gpuPiS_S_i
+   7               0               0        3        0      6     .nv.info._Z14matrix_mul_gpuPiS_S_i
+   8               0               0        3        0      7     .nv.info
+   9               0               0        3        0      5     .nv.constant0._Z14matrix_mul_gpuPiS_S_i
+  10               0             376       12       10      4     _Z14matrix_mul_gpuPiS_S_i
+
+
+.nv.constant0._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+0x00000000  0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  0x00000000  0x00000000  
+0x00000000  0x00000000  
+
+
+.text._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+bar = 0	reg = 14	lmem=0	smem=0
+0x00005de4  0x28004404  0xe3f1dc23  0x1b0e4000  
+0x84001c04  0x2c000000  0x88009c04  0x2c000000  
+0x9400dc04  0x2c000000  0x98011c04  0x2c000000  
+0x800001e7  0x40000003  0x30409c03  0x20044000  
+0x20319c03  0x20004000  0x10015de2  0x18000000  
+0xe0011de4  0x28004000  0xe0221ca3  0x50004000  
+0x1060dce3  0x5000c000  0xa0609ca3  0x200b8000  
+0x1042dce3  0x5000c000  0x08429e03  0x6000c000  
+0xb030dc43  0x48004000  0x80811ca3  0x200b8000  
+0x10815ce3  0x5000c000  0xfc001de4  0x28000000  
+0x2001dde4  0x28000000  0xe0825c03  0x48004000  
+0x90515c43  0x48004000  0x00000007  0x60000002  
+0x00235c85  0x84000000  0x00431c85  0x84000000  
+0x04821c03  0x4800c000  0x10411c03  0x4801c000  
+0x2481dc23  0x1a8e0000  0xfc515c43  0x48000000  
+0x08a09c03  0x48010000  0x0cb0dc43  0x48000000  
+0x30d01ca3  0x20000000  0xc00001e7  0x4003fffe  
+0x00001df4  0x40000000  0x30409c03  0x20044000  
+0x20319c03  0x20004000  0xfc001de4  0x28000000  
+0xe021dca3  0x50004000  0x00001de7  0x40000000  
+0x18709c03  0x48000000  0xc000dde4  0x28004000  
+0x10211ca3  0x2007c000  0x10209ce3  0x5000c000  
+0xd0215c43  0x48004000  0x00401c85  0x94000000  
+0x00001de7  0x80000000  
+
+
+.nv.info._Z14matrix_mul_gpuPiS_S_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_CBANK_PARAM_OFFSETS
+	Format:	EIFMT_SVAL
+	Value:	0x0 0x8 0x10 0x18 
+	<0x2>
+	Attribute:	EIATTR_PARAM_CBANK
+	Format:	EIFMT_SVAL
+	Value:	0x9 0x1c0020 
+	<0x3>
+	Attribute:	EIATTR_CBANK_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x1c
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x3	Offset  : 0x18	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x7>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0xffffffff	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : CBANK	
+	<0x8>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x21018c 0x20 
+
+
+.nv.info	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_MIN_STACK_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z14matrix_mul_gpuPiS_S_i(0xa)	min stack size: 0x0
+	<0x2>
+	Attribute:	EIATTR_FRAME_SIZE
+	Format:	EIFMT_SVAL
+	Value:	function: _Z14matrix_mul_gpuPiS_S_i(0xa)	frame size: 0x0
+
+	code for sm_20
+		Function : _Z14matrix_mul_gpuPiS_S_i
+	/*0000*/     /*0x00005de428004404*/ 	MOV R1, c [0x1] [0x100];
+	/*0008*/     /*0xe3f1dc231b0e4000*/ 	ISETP.GE.AND P0, pt, RZ, c [0x0] [0x38], pt;
+	/*0010*/     /*0x84001c042c000000*/ 	S2R R0, SR_Tid_X;
+	/*0018*/     /*0x88009c042c000000*/ 	S2R R2, SR_Tid_Y;
+	/*0020*/     /*0x9400dc042c000000*/ 	S2R R3, SR_CTAid_X;
+	/*0028*/     /*0x98011c042c000000*/ 	S2R R4, SR_CTAid_Y;
+	/*0030*/     /*0x800001e740000003*/ 	@P0 BRA 0x118;
+	/*0038*/     /*0x30409c0320044000*/ 	IMAD.U32.U32 R2, R4, c [0x0] [0xc], R2;
+	/*0040*/     /*0x20319c0320004000*/ 	IMAD.U32.U32 R6, R3, c [0x0] [0x8], R0;
+	/*0048*/     /*0x10015de218000000*/ 	MOV32I R5, 0x4;
+	/*0050*/     /*0xe0011de428004000*/ 	MOV R4, c [0x0] [0x38];
+	/*0058*/     /*0xe0221ca350004000*/ 	IMUL R8, R2, c [0x0] [0x38];
+	/*0060*/     /*0x1060dce35000c000*/ 	IMUL.HI R3, R6, 0x4;
+	/*0068*/     /*0xa0609ca3200b8000*/ 	IMAD R2.CC, R6, R5, c [0x0] [0x28];
+	/*0070*/     /*0x1042dce35000c000*/ 	IMUL.HI R11, R4, 0x4;
+	/*0078*/     /*0x08429e036000c000*/ 	SHL R10, R4, 0x2;
+	/*0080*/     /*0xb030dc4348004000*/ 	IADD.X R3, R3, c [0x0] [0x2c];
+	/*0088*/     /*0x80811ca3200b8000*/ 	IMAD R4.CC, R8, R5, c [0x0] [0x20];
+	/*0090*/     /*0x10815ce35000c000*/ 	IMUL.HI R5, R8, 0x4;
+	/*0098*/     /*0xfc001de428000000*/ 	MOV R0, RZ;
+	/*00a0*/     /*0x2001dde428000000*/ 	MOV R7, R8;
+	/*00a8*/     /*0xe0825c0348004000*/ 	IADD R9, R8, c [0x0] [0x38];
+	/*00b0*/     /*0x90515c4348004000*/ 	IADD.X R5, R5, c [0x0] [0x24];
+	/*00b8*/     /*0x0000000760000002*/ 	SSY 0x140;
+	/*00c0*/     /*0x00235c8584000000*/ 	LD.E R13, [R2];
+	/*00c8*/     /*0x00431c8584000000*/ 	LD.E R12, [R4];
+	/*00d0*/     /*0x04821c034800c000*/ 	IADD R8, R8, 0x1;
+	/*00d8*/     /*0x10411c034801c000*/ 	IADD R4.CC, R4, 0x4;
+	/*00e0*/     /*0x2481dc231a8e0000*/ 	ISETP.NE.AND P0, pt, R8, R9, pt;
+	/*00e8*/     /*0xfc515c4348000000*/ 	IADD.X R5, R5, RZ;
+	/*00f0*/     /*0x08a09c0348010000*/ 	IADD R2.CC, R10, R2;
+	/*00f8*/     /*0x0cb0dc4348000000*/ 	IADD.X R3, R11, R3;
+	/*0100*/     /*0x30d01ca320000000*/ 	IMAD R0, R13, R12, R0;
+	/*0108*/     /*0xc00001e74003fffe*/ 	@P0 BRA 0xc0;
+	/*0110*/     /*0x00001df440000000*/ 	NOP.S CC.T;
+	/*0118*/     /*0x30409c0320044000*/ 	IMAD.U32.U32 R2, R4, c [0x0] [0xc], R2;
+	/*0120*/     /*0x20319c0320004000*/ 	IMAD.U32.U32 R6, R3, c [0x0] [0x8], R0;
+	/*0128*/     /*0xfc001de428000000*/ 	MOV R0, RZ;
+	/*0130*/     /*0xe021dca350004000*/ 	IMUL R7, R2, c [0x0] [0x38];
+	/*0138*/     /*0x00001de740000000*/ 	BRA 0x140;
+	/*0140*/     /*0x18709c0348000000*/ 	IADD R2, R7, R6;
+	/*0148*/     /*0xc000dde428004000*/ 	MOV R3, c [0x0] [0x30];
+	/*0150*/     /*0x10211ca32007c000*/ 	IMAD R4.CC, R2, 0x4, R3;
+	/*0158*/     /*0x10209ce35000c000*/ 	IMUL.HI R2, R2, 0x4;
+	/*0160*/     /*0xd0215c4348004000*/ 	IADD.X R5, R2, c [0x0] [0x34];
+	/*0168*/     /*0x00401c8594000000*/ 	ST.E [R4], R0;
+	/*0170*/     /*0x00001de780000000*/ 	EXIT;
+		..........................................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_20
+code version = [2,3]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = mm.cu
+	.version 2.3
+	.target sm_20
+	.address_size 64
+	// compiled with /usr/local/cuda/open64/lib//be
+	// nvopencc 4.0 built on 2011-05-12
+
+	//-----------------------------------------------------------
+	// Compiling /tmp/tmpxft_00001e7c_00000000-13_mm.compute_20.cpp3.i (/tmp/ccBI#.ee95Nr)
+	//-----------------------------------------------------------
+
+	//-----------------------------------------------------------
+	// Options:
+	//-----------------------------------------------------------
+	//  Target:ptx, ISA:sm_20, Endian:little, Pointer Size:64
+	//  -O3	(Optimization level)
+	//  -g0	(Debug level)
+	//  -m2	(Report advisories)
+	//-----------------------------------------------------------
+
+	.file	1	"<command-line>"
+	.file	2	"/tmp/tmpxft_00001e7c_00000000-12_mm.compute_20.cudafe2.gpu"
+	.file	3	"/usr/lib/gcc/x86_64-linux-gnu/4.4.7/include/stddef.h"
+	.file	4	"/usr/local/cuda/include/crt/device_runtime.h"
+	.file	5	"/usr/local/cuda/include/host_defines.h"
+	.file	6	"/usr/local/cuda/include/builtin_types.h"
+	.file	7	"/usr/local/cuda/include/device_types.h"
+	.file	8	"/usr/local/cuda/include/driver_types.h"
+	.file	9	"/usr/local/cuda/include/surface_types.h"
+	.file	10	"/usr/local/cuda/include/texture_types.h"
+	.file	11	"/usr/local/cuda/include/vector_types.h"
+	.file	12	"/usr/local/cuda/include/device_launch_parameters.h"
+	.file	13	"/usr/local/cuda/include/crt/storage_class.h"
+	.file	14	"/usr/include/x86_64-linux-gnu/bits/types.h"
+	.file	15	"/usr/include/x86_64-linux-gnu/bits/types/clock_t.h"
+	.file	16	"mm.cu"
+	.file	17	"/usr/local/cuda/include/common_functions.h"
+	.file	18	"/usr/local/cuda/include/math_functions.h"
+	.file	19	"/usr/local/cuda/include/math_constants.h"
+	.file	20	"/usr/local/cuda/include/device_functions.h"
+	.file	21	"/usr/local/cuda/include/sm_11_atomic_functions.h"
+	.file	22	"/usr/local/cuda/include/sm_12_atomic_functions.h"
+	.file	23	"/usr/local/cuda/include/sm_13_double_functions.h"
+	.file	24	"/usr/local/cuda/include/sm_20_atomic_functions.h"
+	.file	25	"/usr/local/cuda/include/sm_20_intrinsics.h"
+	.file	26	"/usr/local/cuda/include/surface_functions.h"
+	.file	27	"/usr/local/cuda/include/texture_fetch_functions.h"
+	.file	28	"/usr/local/cuda/include/math_functions_dbl_ptx3.h"
+
+
+	.entry _Z14matrix_mul_gpuPiS_S_i (
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_M,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_N,
+		.param .u64 __cudaparm__Z14matrix_mul_gpuPiS_S_i_P,
+		.param .s32 __cudaparm__Z14matrix_mul_gpuPiS_S_i_width)
+	{
+	.reg .u32 %r<27>;
+	.reg .u64 %rd<16>;
+	.reg .pred %p<4>;
+	.loc	16	13	0
+$LDWbegin__Z14matrix_mul_gpuPiS_S_i:
+	mov.u32 	%r1, %tid.x;
+	mov.u32 	%r2, %tid.y;
+	mov.u32 	%r3, %ntid.x;
+	mov.u32 	%r4, %ctaid.x;
+	mov.u32 	%r5, %ntid.y;
+	mov.u32 	%r6, %ctaid.y;
+	ld.param.s32 	%r7, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_width];
+	mov.u32 	%r8, 0;
+	setp.le.s32 	%p1, %r7, %r8;
+	@%p1 bra 	$Lt_0_2306;
+	mov.s32 	%r9, %r7;
+	mul.lo.u32 	%r10, %r5, %r6;
+	mul.lo.u32 	%r11, %r3, %r4;
+	add.u32 	%r12, %r10, %r2;
+	add.u32 	%r13, %r11, %r1;
+	mul.lo.s32 	%r14, %r7, %r12;
+	mov.s32 	%r15, %r14;
+	add.s32 	%r16, %r14, %r7;
+	cvt.s64.s32 	%rd1, %r7;
+	mul.wide.s32 	%rd2, %r7, 4;
+	ld.param.u64 	%rd3, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_N];
+	cvt.s64.s32 	%rd4, %r13;
+	mul.wide.s32 	%rd5, %r13, 4;
+	add.u64 	%rd6, %rd3, %rd5;
+	ld.param.u64 	%rd7, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_M];
+	cvt.s64.s32 	%rd8, %r14;
+	mul.wide.s32 	%rd9, %r14, 4;
+	add.u64 	%rd10, %rd7, %rd9;
+	mov.s32 	%r17, 0;
+	mov.s32 	%r18, %r9;
+$Lt_0_1794:
+ //<loop> Loop body line 13, nesting depth: 1, estimated iterations: unknown
+	.loc	16	23	0
+	ld.global.s32 	%r19, [%rd6+0];
+	ld.global.s32 	%r20, [%rd10+0];
+	mul.lo.s32 	%r21, %r19, %r20;
+	add.s32 	%r17, %r17, %r21;
+	add.s32 	%r15, %r15, 1;
+	add.u64 	%rd10, %rd10, 4;
+	add.u64 	%rd6, %rd2, %rd6;
+	setp.ne.s32 	%p2, %r15, %r16;
+	@%p2 bra 	$Lt_0_1794;
+	bra.uni 	$Lt_0_1282;
+$Lt_0_2306:
+	mul.lo.u32 	%r22, %r5, %r6;
+	mul.lo.u32 	%r23, %r3, %r4;
+	add.u32 	%r24, %r22, %r2;
+	add.u32 	%r13, %r23, %r1;
+	mul.lo.s32 	%r14, %r7, %r24;
+	mov.s32 	%r17, 0;
+$Lt_0_1282:
+	.loc	16	25	0
+	ld.param.u64 	%rd11, [__cudaparm__Z14matrix_mul_gpuPiS_S_i_P];
+	add.s32 	%r25, %r14, %r13;
+	cvt.s64.s32 	%rd12, %r25;
+	mul.wide.s32 	%rd13, %r25, 4;
+	add.u64 	%rd14, %rd11, %rd13;
+	st.global.s32 	[%rd14+0], %r17;
+	.loc	16	26	0
+	exit;
+$LDWend__Z14matrix_mul_gpuPiS_S_i:
+	} // _Z14matrix_mul_gpuPiS_S_i
+
