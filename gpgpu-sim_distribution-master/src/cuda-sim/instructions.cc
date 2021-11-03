@@ -26,10 +26,6 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <string>
-
-#include <iostream>
-#include <fstream>
 #include "instructions.h"
 #include "ptx_ir.h"
 #include "opcodes.h"
@@ -45,20 +41,11 @@
 #include "../gpgpu-sim/gpu-sim.h"
 #include "../gpgpu-sim/shader.h"
 
-    #include<stdio.h>  
-    #include<stdlib.h>  
-    #include<string.h>  
-    #include<errno.h>  
-    #include<sys/types.h>  
-    #include<sys/socket.h>  
-    #include<netinet/in.h>  
-#include <arpa/inet.h>
-      #include <unistd.h>
-    #define MAXLINE 4096  
 #include <stdarg.h>
 
+
 unsigned ptx_instruction::g_num_ptx_inst_uid=0;
-#define MY_ADDR 0  
+
 const char *g_opcode_string[NUM_OPCODES] = {
 #define OP_DEF(OP,FUNC,STR,DST,CLASSIFICATION) STR,
 #include "opcodes.def"
@@ -828,6 +815,88 @@ void add_impl( const ptx_instruction *pI, ptx_thread_info *thread )
    thread->set_operand_value(dst, data, i_type, thread, pI, overflow, carry  );
 }
 
+void readFile(int dst_x, int dst_y ,int src_x, int src_y,long long unsigned int* data)
+{
+    char * fileName = new char[100];
+    sprintf(fileName,"./buffer%d_%d_%d_%d",src_x,src_y,dst_x,dst_y);
+    std::ifstream i(fileName);
+    int tmpdata = 0;
+    i>>tmpdata;
+    *data = tmpdata;
+    i.close();
+    delete fileName;
+}
+
+void passMessage(int dst_x, int dst_y,int src_x, int src_y , int data)
+{
+    char * fileName = new char[100];
+    sprintf(fileName,"./buffer%d_%d_%d_%d",dst_x,dst_y,src_x,src_y);
+    std::fstream pass(fileName);
+    pass.open(fileName, std::ios::app);
+    pass<<data<<"\n";
+    pass.close();
+    delete fileName;
+}
+void addc_impl( const ptx_instruction *pI, ptx_thread_info *thread ) 
+{ 
+	ptx_reg_t src1_data, src2_data,data;
+
+   const operand_info &dst  = pI->dst();
+   const operand_info &src1 = pI->src1();
+   const operand_info &src2 = pI->src2();
+   unsigned i_type = pI->get_type();
+   src1_data = thread->get_operand_value(src1, dst, i_type, thread, 1);
+   src2_data = thread->get_operand_value(src2, dst, i_type, thread, 1);
+       	/**
+    * 传入的两个参数为src1_data.u64和src2_data.u64
+    *
+    * src1_data.u64是一个9位数, abcdefghi。ad表示src的x坐标，cd表示src的y坐标，ef表示dst的x坐标，gh表示dst的y坐标，i表是读请求还是写请求
+    * src2_data.u64是一个int型，在写请求中表示要写的数据，在读请求中表示请求的数据号
+    *
+    */
+   //std::cout<<"Step 1\n";
+
+   int data1 = src1_data.u64;
+   int data2 = src2_data.u64;
+    int src_x = data1 / 10000000;
+    int src_y = data1 % 10000000 / 100000;
+    int dst_x = data1 % 100000 / 1000;
+    int dst_y = data1 % 1000 / 10;
+   int opValue = data1 % 10; 
+
+   if(opValue == 0){
+   char* filename= new char[64];
+   sprintf(filename,"./trace/bench.%d.%d",src_x,src_y);
+   std::fstream toController(filename,std::ios::app);
+   long long unsigned int timeNow = gpu_sim_cycle+gpu_tot_sim_cycle;
+
+   if(!toController.is_open())
+   {
+              std::cout<<"Can not pass message to controller\n\n\n\n\n\n";
+              return;
+   }
+   else
+   {
+              toController<<timeNow<<" ";
+              toController<<src_x<<" ";
+              toController<<src_y<<" ";
+              toController<<dst_x<<" ";
+              toController<<dst_y<<" ";
+	      toController<<5<<"\n";
+           }
+   toController.close();
+   passMessage(dst_x,dst_y,src_x,src_y,data2);
+   }
+   else if(opValue == 1)
+   {
+	long long unsigned int *dataValue = &data.u64;
+	readFile(src_x,src_y,dst_x,dst_y,dataValue);
+   thread->set_operand_value(dst, data, i_type, thread, pI, 0, 0  );
+   }
+   //data.u64 = src1_data.u64 + src2_data.u64;
+   //readFile(1,2,src2_data.u64);
+   //thread->set_operand_value(dst, data, i_type, thread, pI, 0, 0  );
+}
 
 void and_impl( const ptx_instruction *pI, ptx_thread_info *thread ) 
 { 
@@ -3029,8 +3098,7 @@ void popc_impl( const ptx_instruction *pI, ptx_thread_info *thread )
 
    thread->set_operand_value(dst,data, i_type, thread, pI);
 }
-void prefetch_impl( const ptx_instruction *pI, ptx_thread_info *thread ) {  inst_not_implemented(pI); 
-}
+void prefetch_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void prefetchu_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void prmt_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 
@@ -3061,9 +3129,7 @@ void rcp_impl( const ptx_instruction *pI, ptx_thread_info *thread )
    thread->set_operand_value(dst,data, i_type, thread, pI);
 }
 
-void red_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { 
-#include<iostream>
-std::cout<<"ss";inst_not_implemented(pI); }
+void red_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 
 void rem_impl( const ptx_instruction *pI, ptx_thread_info *thread ) 
 { 
@@ -3798,7 +3864,7 @@ void subc_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_
 void suld_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void sured_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void sust_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
-void suq_impl( const ptx_instruction *pI, ptx_thread_info *thread ) {std::cout<<"test!";}
+void suq_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 
 ptx_reg_t* ptx_tex_regs = NULL;
 
@@ -4176,15 +4242,7 @@ void tex_impl( const ptx_instruction *pI, ptx_thread_info *thread )
 }
 
 void txq_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
-void trap_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { 
-   #include <fstream> 
-   #include <iostream> 
-   std::ofstream file("test");
-   std::string date="test exceed";
-   file<<date;
-   file.close();
-//inst_not_implemented(pI);
- }
+void trap_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void vabsdiff_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void vadd_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
 void vmad_impl( const ptx_instruction *pI, ptx_thread_info *thread ) { inst_not_implemented(pI); }
@@ -4352,146 +4410,4 @@ ptx_reg_t srcOperandModifiers(ptx_reg_t opData, operand_info opInfo, operand_inf
 
    return result;
 }
-
-/************************************************/
-void sent_message(int dst_ID, long long* data){
-    int    sockfd,rec_len;
-    long long    recvline[4096], sendline[4096];
-    long long    buf[MAXLINE];
-    struct sockaddr_in    servaddr;
-
-    if( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
-    printf("create socket error: %s(errno: %d)\n", strerror(errno),errno);
-    exit(0);
-    }
- 
- 
-    memset(&servaddr, 0, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(8000);
-
-    sendline[0]=dst_ID;
-    sendline[1]=MY_ADDR;
-    sendline[2]=reinterpret_cast<long long>(data);
- 
-    if( connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0){
-    printf("connect error: %s(errno: %d)\n",strerror(errno),errno);
-    exit(0);
-    }
-    int size =sizeof(sendline) / sizeof(sendline[0]);
-    if( send(sockfd, sendline, size, 0) < 0)
-    {
-    printf("send msg error: %s(errno: %d)\n", strerror(errno), errno);
-    exit(0);
-    }
-    if((rec_len = recv(sockfd, buf, MAXLINE,0)) == -1) {
-       perror("recv error");
-       exit(1);
-    }
-    buf[rec_len]  = '\0';
-};
-void recv_message(int & result_1, int & result_2)
-{
-    int    sockfd, n,rec_len;
-    long long    recvline[4096], sendline[4096];
-    long long    buf[4096];
-    struct sockaddr_in    servaddr;
-
-    if( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
-    printf("create socket error: %s(errno: %d)\n", strerror(errno),errno);
-    exit(0);
-    }
- 
- 
-    memset(&servaddr, 0, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(8001);
-
-    sendline[0]=MY_ADDR;
- 
-    if( connect(sockfd, (struct sockaddr*)&servaddr, sizeof(servaddr)) < 0){
-    printf("connect error: %s(errno: %d)\n",strerror(errno),errno);
-    exit(0);
-    }
-    int size =sizeof(sendline) / sizeof(sendline[0]);
-    if( send(sockfd, sendline, size, 0) < 0)
-    {
-    printf("send msg error: %s(errno: %d)\n", strerror(errno), errno);
-    exit(0);
-    }
-    if((rec_len = recv(sockfd, buf, 4096,0)) == -1) {
-       perror("recv error");
-       exit(1);
-    }
-
-    std::cout<<"************************************************"<<buf<<std::endl;
-
-};
-
-//extern void intersim2_push(unsigned input, unsigned output, void* data, unsigned int size);
-
-void addc_impl( const ptx_instruction *pI, ptx_thread_info *thread ) {
-   
-
-   //处理参数传入
-   ptx_reg_t src1_data, src2_data;
-
-   const operand_info &dst  = pI->dst();
-   const operand_info &src1 = pI->src1();
-   const operand_info &src2 = pI->src2();
-   unsigned i_type = pI->get_type();
-   src1_data = thread->get_operand_value(src1, dst, i_type, thread, 1);
-   src2_data = thread->get_operand_value(src2, dst, i_type, thread, 1);
-
-	if(src2_data.u64>=1024 && src2_data.u64<2048){
-	std::fstream connectfile("/home/ly/桌面/connect/connect_B.txt",std::ios::app);
-	connectfile<<src2_data.u64<<"\n";
-	connectfile.close();}
-	else if(src2_data.u64>=2048 && src2_data.u64<3072){
-	std::fstream connectfile("/home/ly/桌面/connect/connect_C.txt",std::ios::app);
-	connectfile<<src2_data.u64<<"\n";
-	connectfile.close();}
-	else if(src2_data.u64>=3072){
-	std::fstream connectfile("/home/ly/桌面/connect/connect_D.txt",std::ios::app);
-	connectfile<<src2_data.u64<<"\n";
-	connectfile.close();}
-
-
-if(src2_data.u64>=1024 && src2_data.u64<2048){
-static int buffer1 = 0;
-if(buffer1<20)
-buffer1++;
-else{
-buffer1 = 0;
-std::fstream file("trace.txt",std::ios::app);
-//file<<gpu_sim_cycle+gpu_tot_sim_cycle<<" "<<src1_data.u64<<" "<<src2_data.u64<<" 0 0 5\n";
-
-file<<gpu_sim_cycle+gpu_tot_sim_cycle<<" 0 0 0 2 5\n";
-file.close();}}
-
-else if(src2_data.u64>=1024 && src2_data.u64<2048){
-static int buffer2 = 0;
-if(buffer2<20)
-buffer2++;
-else{
-buffer2 = 0;
-std::fstream file("trace.txt",std::ios::app);
-file<<gpu_sim_cycle+gpu_tot_sim_cycle<<" 0 0 0 1 5\n";
-file.close();}}
-
-else if(src2_data.u64>=3072){
-static int buffer3 = 0;
-if(buffer3<20)
-buffer3++;
-else{
-buffer3 = 0;
-std::fstream file("trace.txt",std::ios::app);
-file<<gpu_sim_cycle+gpu_tot_sim_cycle<<" 0 0 0 3 5\n";
-file.close();}}
-
-std::cout<<"*******"<<std::endl;
-std::cout<<src1_data.u64<<":"<<src2_data.u64<<std::endl;
-std::cout<<"!!!!!!!!!!\n";
-	
-};
 
